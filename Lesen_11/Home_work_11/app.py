@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import function
 
 candidates = function.Candidates('candidates.json')
@@ -8,40 +8,24 @@ app = Flask(__name__)
 
 @app.route("/")
 def main_page():
-    text = ''
-    for candidate in candidates.content:
-        text += f"""<p><a href="/candidate/{candidate['id']}">{candidate['name']}</a></p>"""
-
-    return f'<h1>Все кандидаты</h1>{text}'
+    return render_template('list.html', candidates=candidates.content)
 
 
 @app.route("/candidate/<int:uid>/")
 def candidate_by_number(uid):
-    candidate = candidates.get_candidate(uid)
-    return f"""
-<h1>{candidate['name']}</h1>
-<p>{candidate['position']}</p>
-<img src="{candidate['picture']}" width=200/>
-<p>{candidate['skills']}</p>
-"""
+    return render_template('card.html', candidate=candidates.get_candidate(uid))
 
 
 @app.route("/search/<candidate_name>/")
 def candidate_by_name(candidate_name):
-    text = ''
-    for candidate in candidates.get_candidates_by_name(candidate_name):
-        text += f"""<p><a href="/candidate/{candidate['id']}">{candidate['name']}</a></p>"""
-
-    return f'<h1>Найдено кандидатов {len(candidates.get_candidates_by_name(candidate_name))}</h1>{text}'
+    cnt_candidates = len(candidates.get_candidates_by_name(candidate_name))
+    return render_template('search.html', cnt_candidates=cnt_candidates, candidates=candidates.get_candidates_by_name(candidate_name))
 
 
 @app.route("/skill/<skill_name>/")
 def candidate_by_skills(skill_name):
-    text = ''
-    for candidate in candidates.get_candidates_by_skill(skill_name):
-        text += f"""<p><a href="/candidate/{candidate['id']}">{candidate['name']}</a></p>"""
-
-    return f'<h1>Найдено со скиллом {skill_name}: {len(candidates.get_candidates_by_skill(skill_name))}</h1>{text}'
+    cnt_candidates = len(candidates.get_candidates_by_skill(skill_name))
+    return render_template('skill.html', cnt_candidates=cnt_candidates, candidates=candidates.get_candidates_by_skill(skill_name), skill_name=skill_name)
 
 
 app.run(host='127.0.0.2', port=80)
