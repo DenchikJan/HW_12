@@ -1,0 +1,16 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [16/Sep/2022 21:47:33] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Sep/2022 21:47:33] "[36mGET /static/assets/css/style.css HTTP/1.1[0m" 304 -
+INFO:root:¬ыполнин поиск по слову - гласные
+INFO:werkzeug:127.0.0.1 - - [16/Sep/2022 21:47:37] "GET /search?s=гласные HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Sep/2022 21:47:37] "[36mGET /static/assets/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Sep/2022 21:48:04] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Sep/2022 21:48:04] "[36mGET /static/assets/css/style.css HTTP/1.1[0m" 304 -
+INFO:root:¬ыполнин поиск по слову - вижу
+INFO:werkzeug:127.0.0.1 - - [16/Sep/2022 21:48:08] "GET /search?s=вижу HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Sep/2022 21:48:08] "[36mGET /static/assets/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
